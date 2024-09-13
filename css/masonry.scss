@@ -1,0 +1,43 @@
+.masonry.grid {
+	--gap: var(--spacing);
+	--columns: 3;
+	--column-width: calc(100% / var(--columns));
+	--item-width-diff: calc(calc(var(--gap) * calc(var(--columns) - 1)) / var(--columns));
+	--item-width: calc(calc(100% / var(--columns)) - var(--item-width-diff));
+
+	margin: var(--gap) 0;
+
+	::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+
+	>.grid-sizer,
+	>.grid-item {
+		width: var(--item-width);
+	}
+
+	>.grid-gutter {
+		width: var(--gap);
+	}
+
+	>.grid-item {
+		float: left;
+		margin-bottom: var(--gap);
+	}
+
+}
+
+@media (max-width: 1024px) {
+	.masonry.grid {
+		--columns: 2;
+	}
+}
+
+@media (max-width: 600px) {
+	.masonry.grid {
+		--columns: 1;
+	}
+}

@@ -1,0 +1,12 @@
+image: heyy.png
+title: Coi Leray
+project: X/YZ 20XX
+company: Paper
+tags: magazine, coi leray, paper
+
+image: heyy2.png
+title: Gaga
+project: X/YZ 10XX
+company: Paper Maga
+tags: Gaga
+

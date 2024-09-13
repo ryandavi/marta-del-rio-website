@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+	if (window.location.hostname !== 'mdelrio.com') {
+		// Check if a base tag already exists
+		const existingBaseTag = document.querySelector('base');
+
+		// If a base tag exists, remove it
+		if (existingBaseTag) {
+			existingBaseTag.parentNode.removeChild(existingBaseTag);
+		}
+
+		// Get new base href
+		const baseHref = window.location.hostname === 'ryandavi.com' ? 'https://ryandavi.com/mdelrio.com/' : 'http://localhost/mdelrio.com/';
+
+		// Create a new base element
+		const newBaseTag = document.createElement('base');
+		newBaseTag.href = baseHref;
+
+		// Append the new base tag to the head
+		document.head.appendChild(newBaseTag);
+	}
+</script>
+
+
+<head>
+	<base href="http://mdelrio.com/">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Your website description">
+	<meta name="keywords" content="your,keywords,here">
+	<meta name="author" content="Your Name">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/marta.css">
+	<link rel="stylesheet" href="css/marquee.css">
+	<link rel="stylesheet" href="css/masonry.css">
+	<link rel="stylesheet" href="css/lightbox.css">
+	<meta name="pinterest" content="nopin" description="Sorry, Pinterest Not Allowed!">
+	<meta name="pinterest" content="nohover">
+	<title>Marta Del Rio | Creative Consultant & Stylist</title>
+	
+</head>
+
+<body class="about">
+	<!-- Start Layout -->
+	<div class="layout">
+		<!-- Start Header -->
+		<header class="header fixed">
+			<div class="nav top-nav">
+				<input type="checkbox" id="nav-check">
+				<a href="./" class="nav-header">
+					<h1 class="nav-title">
+						<img src="images/meta/logo-01-01.svg" alt="Marta Del Rio"> Marta Del Rio
+					</h1>
+				</a>
+				<div class="nav-btn close-button button" alt="Menu">
+					<label for="nav-check" class="hamburger">
+						<div class="top-bun"></div>
+						<div class="meat"></div>
+						<div class="bottom-bun"></div>
+					</label>
+				</div>
+				<div class="nav-links">
+					<a href="./">Portfolio</a>
+					<a class="current" href="about.html">About</a>
+					<a href="https://www.instagram.com/marta.del.rio/" target="_blank">Instagram</a>
+				</div>
+			</div>
+		</header>
+		<!-- End Header -->
+		<!-- Start Content -->
+		<div class="main-content">
+			<img class="portrait" src="images\meta\about\200805_0030_NICOLA_TEAM_069_BY_CHRISTIAN_HOGSTEDT.jpg">
+			<div class="about-content">
+				<h2>About</h2>
+				<div class="bio">
+					<p class="large">Marta Del Rio is a global creative director and designer who has been responsible
+						for building the unique and incomparable identities of artists around the world. Her
+						image-driven and digitally native expertise places her at the forefront of design and
+						innovation.</p>
+					<p>Originally from Marbella, Spain and now based out of Los Angeles, her insatiable curiosity for
+						new cultures, unexpected references and sharing of ideas informs her process. Known for her
+						perseverance and passion for her work, she is always on the lookout for new designer talent
+						across the globe and is equally an ardent supporter of young talent.</p>
+				</div>
+				<div class="lists">
+					<h3>Celebrity Work</h3>
+					<ul class="horizontal">
+						<li><a href="https://ryandavi.com/">Emma Johnson</a></li>
+						<li>Liam Davis</li>
+						<li>Olivia Smith</li>
+						<li>Noah Anderson</li>
+						<li>Ava Miller</li>
+						<li>Isabella Wilson</li>
+						<li>Sophia Martinez</li>
+						<li>Jackson Taylor</li>
+						<li>Lucas Brown</li>
+						<li>Oliver Thomas</li>
+						<li>Amelia Harris</li>
+						<li>Ethan White</li>
+						<li>Mia Martinez</li>
+						<li>Aiden Robinson</li>
+						<li><a href="./filter/lady gaga#portfolio">Lady Gaga</a></li>
+						<li>Abigail Wilson</li>
+						<li>Evelyn Anderson</li>
+						<li>Logan Clark</li>
+						<li>Grace Taylor</li>
+					</ul>
+					<h3>Magazines</h3>
+					<ul class="horizontal">
+						<li>Rybaby Weekly</li>
+						<li><a href="./filter/paper#portfolio">PAPER</a></li>
+						
+					</ul>
+					<h3>Clients</h3>
+					<ul class="horizontal">
+						<li>KitchenAid</li>
+						<li>RYBABY LLC</li>
+					</ul>
+					<h3>Contact</h3>
+					<table class="contact">
+						<tr>
+							<td class="label smallText">Studio</td>
+							<td><a href="mailto:Marta@mdelrio.com">marta@mdelrio.com</a></td>
+						</tr>
+						<tr>
+							<td class="label smallText">Bookings</td>
+							<td><a href="mailto:Kent@theonly.agency">kent@theonly.agency</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- Start Footer-->
+		<footer>&copy; 2024 Marta Del Rio</footer>
+		<!-- End Footer -->
+	</div>
+	<!-- End Layout -->
+	<script src="https://player.vimeo.com/api/player.js"></script>
+	<script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.js"></script>
+	<script src="https://unpkg.com/imagesloaded@5.0.0/imagesloaded.pkgd.min.js"></script>
+	<script src="js/lightbox.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+
+</html>

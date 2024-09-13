@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+	# custom urls
+	#RewriteCond %{REQUEST_URI} !^/index\.html
+	RewriteRule ^portfolio/?$ index.html [NC,L]
+	RewriteRule ^home/?$ index.html [NC,L]
+	
+	# filter URL
+	RewriteRule ^filter/?$ index.html [NC,L]
+	RewriteRule ^filter/(.*)$ index.html?filter=$1 [NC,L]
+  
+	# Remove file extensions from the rest
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.+?)/?$ $1.html [NC,L]
+
+	# error page
+	RewriteCond %{REQUEST_FILENAME} !-f  
+	RewriteCond %{REQUEST_FILENAME} !-d  
+	RewriteRule .* error.html [L] 
+
+	# Don't look at htaccess
+	#<Files .htaccess>
+	#	Order Allow,Deny
+	#	Deny from all
+	#</Files>
+		
+	# Prevent viewing directory listings
+	Options All -Indexes
+
+  </IfModule>

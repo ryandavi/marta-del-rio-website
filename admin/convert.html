@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Text to HTML Template Converter</title>
+	<style>
+		textarea {
+			width: 100%;
+			height: 200px;
+			margin-bottom: 10px;
+		}
+
+		.copy-message {
+			display: none;
+			color: green;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="load_buttons">
+		<button onclick="loadData('portfolio.txt', 'portfolio')">Load Portfolio Data</button>
+		<button onclick="loadData('carousel.txt', 'carousel')">Load Carousel Data</button>
+	</div>
+	<textarea id="textInput" placeholder="Paste text data here..."></textarea>
+	<select id="templateType">
+		<option value="carousel">Carousel</option>
+		<option value="portfolio">Portfolio</option>
+	</select>
+	<button onclick="convertText()">Convert</button>
+	<textarea id="output" placeholder="Converted HTML will appear here..." readonly></textarea>
+	<button onclick="copyToClipboard()">Copy to Clipboard</button>
+	<div class="copy-message" id="copyMessage">Copied!</div>
+	<script>
+		function convertText() {
+			var textInput = document.getElementById("textInput").value.trim();
+			var templateType = document.getElementById("templateType").value;
+			var outputTextarea = document.getElementById("output");
+
+			var htmlTemplate = '';
+
+
+			var items = textInput.split('\n\n'); // Split input by empty lines
+			htmlTemplate = items.map(item => {
+				var data = item.split('\n').reduce((acc, line) => {
+					var [key, value] = line.split(':').map(item => item.trim());
+					acc[key.toLowerCase()] = value;
+					return acc;
+				}, {});
+
+				var classes = "slide";
+
+				if (templateType === "portfolio") {
+					classes += " grid-item";
+				}
+
+				var escapedTitle = data.title.replace(/"/g, '\\"');
+
+return `<div class="${classes}" ${data.tags ? `data-tags="${data.tags}"` : ''}>
+	<div class="wrapper">
+		${data.image ? `<img class="image" ${data.title ? `title="${escapedTitle}" alt="${escapedTitle}"` : ''} src="${data.image}" />` : ''}
+		<div class="overlay meta">
+			${data.title ? `<div class="title">${data.title}</div>` : ''}
+			${data.project ? `<div class="project">${data.project}</div>` : ''}
+			${data.role ? `<div class="notes">${data.role}</div>` : ''}
+			${data.company ? `<div class="company">${data.company}</div>` : ''}
+			${data.notes ? `<div class="notes">${data.notes}</div>` : ''}
+		</div>
+	</div>
+</div>`;
+			}).join('');
+
+			outputTextarea.value = htmlTemplate.trim();
+		}
+
+		function loadData(filename, templateType) {
+			fetch(filename)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.text();
+				})
+				.then(data => {
+					console.log("Data fetched successfully:", data);
+					document.getElementById('textInput').value = data;
+					document.getElementById('templateType').value = templateType;
+				})
+				.catch(error => {
+					console.error('Error loading data:', error);
+				});
+		}
+
+		function copyToClipboard() {
+			var outputTextarea = document.getElementById("output");
+			outputTextarea.select();
+			document.execCommand("copy");
+
+			var copyMessage = document.getElementById("copyMessage");
+			copyMessage.style.display = "block";
+			setTimeout(function () {
+				copyMessage.style.display = "none";
+			}, 1500); // Hide the message after 1.5 seconds
+		}
+
+
+	</script>
+</body>
+
+</html>
